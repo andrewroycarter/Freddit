@@ -3,16 +3,17 @@
 open System
 open Foundation
 open UIKit
+open Result
 
 type PostsTableViewDataSource () =
     inherit UITableViewDataSource ()
-
-    let posts = [{Post.title="Test reddit post"}]
+   
+    member val Posts = [{Post.title="Test reddit post"}]
 
     override this.RowsInSection (tableView, section) =
-        nint posts.Length
+        nint this.Posts.Length
 
     override this.GetCell (tableView, indexPath) =
         let cell = tableView.DequeueReusableCell ("PostTableViewCell", indexPath) :?> PostTableViewCell
-        cell.TitleLabel.Text <- (posts.Item indexPath.Row).title
+        cell.TitleLabel.Text <- (this.Posts.Item indexPath.Row).title
         cell :> UITableViewCell

@@ -82,8 +82,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WinHttpHandler" />
+    <Reference Include="FSharp.Core" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -95,6 +98,7 @@
     <InterfaceDefinition Include="Main.storyboard" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <Compile Include="Result.fs" />
     <Compile Include="Post.fs" />
     <Compile Include="PostTableViewCell.fs" />
     <Compile Include="PostsTableViewDataSource.fs" />
@@ -103,6 +107,7 @@
     <InterfaceDefinition Include="PostTableViewCell.xib" />
     <Compile Include="PostsViewController.fs" />
     <Compile Include="Main.fs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.FSharp.targets" />
 </Project>

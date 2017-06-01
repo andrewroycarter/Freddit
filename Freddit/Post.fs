@@ -2,4 +2,4 @@
 
 open System
 
-type Post = {title:string}
+type Post = {title:String}

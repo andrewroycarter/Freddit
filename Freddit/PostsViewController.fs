@@ -3,6 +3,7 @@
 open System
 open Foundation
 open UIKit
+open Result
 
 [<Register ("PostsViewController")>]
 type PostsViewController (handle:IntPtr) as this =
@@ -18,10 +19,24 @@ type PostsViewController (handle:IntPtr) as this =
 
     override this.ViewDidLoad () =
         base.ViewDidLoad ()
-        this.setupTableView 
+        this.setupTableView
+
+    override this.ViewDidAppear (animated:bool) =
+        base.ViewDidAppear (animated)
+        this.GetPosts |> ignore
 
     member private this.setupTableView =
         let nib = UINib.FromName ("PostTableViewCell", null)
         this.TableView.RegisterNibForCellReuse (nib, "PostTableViewCell")
         this.TableView.Delegate <- tableViewDelegate
         this.TableView.DataSource <- tableViewDataSource
+    
+    member private this.GetPosts =
+        async {
+            let httpClient = new System.Net.Http.HttpClient ()
+            let uri = Uri "http://www.reddit.com/.json"
+            let! response = httpClient.GetAsync (uri) |> Async.AwaitTask
+            let! responseString = response.Content.ReadAsStringAsync () |> Async.AwaitTask
+            return Ok responseString
+        }
+
