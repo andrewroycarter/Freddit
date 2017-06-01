@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Freddit", "Freddit\Freddit.fsproj", "{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Release|iPhone.ActiveCfg = Release|iPhone
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Release|iPhone.Build.0 = Release|iPhone
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{B1B59659-3F7C-4A32-A34C-ABCF9B96DC69}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal
