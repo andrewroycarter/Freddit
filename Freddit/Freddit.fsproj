@@ -95,6 +95,7 @@
     <InterfaceDefinition Include="Main.storyboard" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <Compile Include="Post.fs" />
     <Compile Include="PostTableViewCell.fs" />
     <Compile Include="PostsTableViewDataSource.fs" />
     <Compile Include="PostsTableViewDelegate.fs" />
