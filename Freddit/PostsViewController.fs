@@ -32,7 +32,7 @@ type PostsViewController (handle:IntPtr) as this =
 
     override this.ViewDidAppear (animated:bool) =
         base.ViewDidAppear (animated)
-        this.GetPosts |> Async.StartImmediate
+        this.ReloadPosts |> Async.StartImmediate
 
     member private this.setupTableView =
         let nib = UINib.FromName ("PostTableViewCell", null)
@@ -40,9 +40,22 @@ type PostsViewController (handle:IntPtr) as this =
         this.TableView.WeakDelegate <- tableViewDelegate
         this.TableView.WeakDataSource <- tableViewDataSource
     
-    member private this.GetPosts =
-        async {
-            let! page = RedditPage.AsyncLoad("http://www.reddit.com/.json")
+    member private this.ReloadPosts = async {
+        let! result = this.GetPosts
+
+        match result with
+        | Ok page ->
             tableViewDataSource.Posts <- page.Data.Children
             this.TableView.ReloadData ()
-        }
+        | Error error ->
+            let controller = UIAlertController.Create ("Error", error.ToString (), UIAlertControllerStyle.Alert)
+            controller.AddAction (UIAlertAction.Create ("Ok", UIAlertActionStyle.Cancel, null)) 
+            this.PresentViewController (controller, true, null)
+    }
+
+    member private this.GetPosts :Async<Result<RedditPage.Root, exn>> = async {
+        try
+            let! page = RedditPage.AsyncLoad("http://www.reddit.com/.json")
+            return Ok page
+        with error -> return Error error
+    } 
